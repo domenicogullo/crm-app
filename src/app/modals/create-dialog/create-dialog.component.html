@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>
+  {{ isEditMode ? 'Update Product' : 'Add a New Product' }}</h1>
+<mat-dialog-content>
+  <div>
+    <mat-card appearance="outlined">
+      <mat-card-content><h2>Product details:</h2></mat-card-content>
+        
+      <form [formGroup]="productForm">
+        <mat-form-field class="form-field">
+          <mat-label>Product name</mat-label>
+          <input matInput type="text" name="name" matInput formControlName="name">
+            
+          @if (productForm.get('name')?.hasError('required')) {
+            <mat-error>Name is <strong>required</strong></mat-error>
+          }
+            
+          <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearField('name')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+          
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label>Price</mat-label>
+            <input type="number" name="price" matInput formControlName="price">
+              
+            @if (productForm.get('price')?.hasError('required')) {
+              <mat-error>Price is <strong>required</strong></mat-error>
+            }
+              
+            <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearField('price')">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+          
+        <div>
+          <mat-form-field>
+            <mat-label>User ID</mat-label>
+            <mat-select formControlName="userId">
+              <mat-option *ngFor="let user of users" [value]="user.id">
+                {{user.id}} - {{user.name}}
+              </mat-option>
+                
+              @if (productForm.get('userId')?.hasError('required')) {
+                <mat-error>User ID is <strong>required</strong></mat-error>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+        <div class="add-button-row">
+          <button mat-flat-button 
+            [ngStyle]="{ 'background-color': productForm.valid ? '#3F51B5' : 'grey' }"  
+            [disabled] = "!productForm.valid" type="submit" (click)="onConfirm()">Add</button>
+          <button mat-flat-button (click)="onCancel()">Back</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</mat-dialog-content>

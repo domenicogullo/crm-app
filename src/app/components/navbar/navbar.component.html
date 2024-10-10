@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>CRM - Customer Relationship Management</span>
+  <span class="spacer"></span>
+  
+  <ng-container *ngIf="!isLoggedIn">
+    <button mat-button [routerLink]="['/login']">Login</button>
+    <button mat-button [routerLink]="['/register']">Register</button>
+  </ng-container>
+  
+  <ng-container *ngIf="isLoggedIn">
+    <button mat-button [routerLink]="['/users']">Users</button>
+    <button mat-button [routerLink]="['/products']">Products</button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>

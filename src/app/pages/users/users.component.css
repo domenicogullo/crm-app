@@ -1,0 +1,21 @@
+.add-button-container {
+    padding: 5px;
+    width: 300px;
+}
+
+.add-button{
+    background-color: #3F51B5;
+    color:white;
+}
+
+.filter{
+    width: 1200px;
+    margin-top: 10px;
+}
+
+.no-data-message {
+    text-align: center;
+    font-style: italic;
+    color: grey;
+    padding: 20px;
+}

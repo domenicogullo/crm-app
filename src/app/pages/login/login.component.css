@@ -1,0 +1,14 @@
+.form-field {
+    width: 350px;
+    padding: 20px;
+}
+
+.example-button-row {
+    display: table-cell;
+    max-width: 800px;
+}
+  
+.example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 200px;
+    color: white
+}

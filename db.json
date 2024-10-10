@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "85995",
+      "name": "Domenico Gullo",
+      "email": "domenicogullo00@gmail.com",
+      "password": "domenico00"
+    },
+    {
+      "id": "51067",
+      "name": "Marco Rossi",
+      "email": "marcoRossi@gmail.com",
+      "password": "marco00"
+    },
+    {
+      "id": "37387",
+      "name": "Giulio Donato",
+      "email": "giulioDonato@gmail.com",
+      "password": "giulio"
+    }
+  ],
+  "products": [
+    {
+      "name": "Prodotto 1",
+      "price": 10.99,
+      "userId": "85995",
+      "id": "60230"
+    },
+    {
+      "id": "790",
+      "name": "Prodotto 2",
+      "price": 99,
+      "userId": "51067"
+    }
+  ]
+}

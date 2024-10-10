@@ -1,0 +1,63 @@
+<div>
+  <mat-card appearance="outlined">
+    <mat-card-content><h2>Insert new user credentials</h2></mat-card-content>
+    <form [formGroup]="newUserForm" (ngSubmit) = "onSubmit()">
+      <mat-form-field class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" name="name" matInput formControlName="name">
+       
+        @if (newUserForm.get('name')?.hasError('required')) {
+          <mat-error>Name is <strong>required</strong></mat-error>
+        }
+
+        <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearField('name')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <div>
+        <mat-form-field class="form-field">
+          <mat-label>Email</mat-label>
+          <input type="email" name="email" matInput formControlName="email">
+          
+          @if (newUserForm.get('email')?.hasError('email') && !newUserForm.get('email')?.hasError('required')) {
+            <mat-error>Enter a valid email address</mat-error>
+          }
+          
+          @if (newUserForm.get('email')?.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+          
+          <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearField('email')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="password" matInput formControlName="password">
+        
+          @if (newUserForm.get('password')?.hasError('minlength') && !newUserForm.get('password')?.hasError('required')) {
+            <mat-error>Password must have at least 6 characters</mat-error>
+          }
+        
+          @if (newUserForm.get('password')?.hasError('required')) {
+            <mat-error>Password is <strong>required</strong></mat-error>
+          }
+        
+          <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearField('password')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>  
+      </div>
+
+      <div class="example-button-row">
+        <button mat-flat-button 
+          [ngStyle]="{ 'background-color': newUserForm.valid ? '#3F51B5' : 'grey' }"  
+          [disabled] = "!newUserForm.valid">Add user</button>
+        
+          <button mat-flat-button type="reset" style="background-color: red;">Reset</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
